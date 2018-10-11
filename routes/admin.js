@@ -2,6 +2,7 @@
 
 var router = require('koa-router')();
 var login = require('./login/login.js');
+var user = require('./user/user.js');
 var url=require('url');
 
 // router.use((ctx,next)=> {
@@ -39,5 +40,6 @@ router.get('/',async (ctx)=>{
  })
 
  router.use('/login',login);
+ router.use('/user',user);
 
  module.exports = router.routes();
