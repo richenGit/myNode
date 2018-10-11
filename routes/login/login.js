@@ -2,11 +2,12 @@
 // 登录页面路由
 
 const router = require('koa-router')();
-
+var DB = require('../../module/db.js');
 
 // 登录界面
 router.get('/', async (ctx) => {
-    ctx.session.code = '123';
+    ctx.session.code = '1234';
+    var result= await DB.find('user',{});
     await ctx.render('admin/login');
 });
 
@@ -27,20 +28,11 @@ router.post('/doLogin', async (ctx) => {
         ctx.session.userinfo = 'richen';
         ctx.redirect(ctx.state.__HOST__+'/admin');
     } else {
-        ctx.render('admin/index',{
+        await ctx.render('admin/error',{
             message:'验证码错误',
             redirect: ctx.state.__HOST__+'/admin/login'
         })
     }
-
-
-    console.log('登录成功');
-    
-    // ctx.render('admin/error',{
-    //     message:'验证码失败',
-    //     redirect: ctx.state.__HOST__+'/admin/login'
-    // })
-    
 });
 
 
