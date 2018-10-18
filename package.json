@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/richenGit/myNode#readme",
   "dependencies": {
+    "alogs": "^0.1.5",
     "art-template": "^4.12.2",
     "koa": "^2.5.0",
     "koa-art-template": "^1.1.1",
